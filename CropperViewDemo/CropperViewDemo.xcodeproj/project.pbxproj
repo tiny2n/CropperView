@@ -68,6 +68,7 @@
 		F15D7540197AC0220026B5BF /* CropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropperView.m; sourceTree = "<group>"; };
 		F15D7545197AC2170026B5BF /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		F15D7548197AC4E60026B5BF /* ICropper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICropper.h; sourceTree = "<group>"; };
+		F15D754A197AD4DB0026B5BF /* ICropperCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICropperCorner.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,12 +173,13 @@
 		F15D7539197AC0220026B5BF /* CropperView */ = {
 			isa = PBXGroup;
 			children = (
+				F15D7548197AC4E60026B5BF /* ICropper.h */,
+				F15D754A197AD4DB0026B5BF /* ICropperCorner.h */,
 				F15D753A197AC0220026B5BF /* CropperCornerManager.h */,
 				F15D753B197AC0220026B5BF /* CropperCornerManager.m */,
 				F15D753C197AC0220026B5BF /* CropperCornerView.h */,
 				F15D753D197AC0220026B5BF /* CropperCornerView.m */,
 				F15D753E197AC0220026B5BF /* CropperCornerView.png */,
-				F15D7548197AC4E60026B5BF /* ICropper.h */,
 				F15D753F197AC0220026B5BF /* CropperView.h */,
 				F15D7540197AC0220026B5BF /* CropperView.m */,
 			);

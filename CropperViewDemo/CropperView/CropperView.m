@@ -100,26 +100,26 @@
 
 #pragma mark -
 #pragma mark UIGestureRecognizer
-- (void)panGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer
+- (void)panGestureRecognizer:(UIPanGestureRecognizer *)sender
 {
-    CGPoint point   = [panGestureRecognizer locationInView:[panGestureRecognizer view]];
+    CGPoint point   = [sender locationInView:[sender view]];
     NSInteger index = [_cropperCornerManager cornerIndexFromCGPoint:point];
     
-    if (panGestureRecognizer.state == UIGestureRecognizerStateBegan)
+    if ([sender state] == UIGestureRecognizerStateBegan)
     {
-        for (CropperCornerView * cropperCornerView in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:index])
+        for (id<ICropperCorner> cropperCorner in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:index])
         {
             // frame 전체적으로 이동 준비
-            [cropperCornerView setBeganCenter];
+            [cropperCorner setBeganCenter];
         }
     }
-    else if (panGestureRecognizer.state == UIGestureRecognizerStateChanged)
+    else if (sender.state == UIGestureRecognizerStateChanged)
     {
-        CGPoint translate = [panGestureRecognizer translationInView:[panGestureRecognizer view]];
-        for (CropperCornerView * cropperCornerView in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:index])
+        CGPoint translate = [sender translationInView:[sender view]];
+        for (id<ICropperCorner> cropperCorner in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:index])
         {
             // frame 전체적으로 이동
-            [_cropperCornerManager cropperCornerView:cropperCornerView translate:translate cropperCornerMode:CropperCornerModeAll];
+            [_cropperCornerManager cropperCorner:cropperCorner translate:translate cropperCornerMode:CropperCornerModeAll];
         }
     }
 }
