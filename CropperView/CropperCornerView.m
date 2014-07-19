@@ -1,6 +1,5 @@
 //
 //  CropperCornerView.m
-//
 //  Cropper
 //
 //  Created by 최 중관 on 2014. 7. 18..
@@ -18,9 +17,12 @@
 
 @implementation CropperCornerView
 
+@synthesize cropperCornerMode;
+@synthesize index = tag;
+
 - (void)_initialization
 {
-    _cropperCornerMode = CropperCornerModeNone;
+    cropperCornerMode = CropperCornerModeNone;
     
     [self setImage:[UIImage imageNamed:@"CropperCornerView.png"]];
     [self setUserInteractionEnabled:YES];
@@ -75,7 +77,7 @@
     _beganCenter = [self center];
 }
 
-- (void)setTranslate:(CGPoint)translate cropperCornerMode:(CropperCornerMode)cropperCornerMode
+- (void)setTranslate:(CGPoint)translate cropperCornerMode:(CropperCornerMode)newCropperCornerMode
 {
     // ex,. 우측 & 아래 움직일땐 ...
     // 우축 & 위   ... Y 고정
@@ -83,14 +85,14 @@
     // 좌측 & 위   ... X, Y고정
     CGPoint newPoint = _beganCenter;
     
-    if ((_cropperCornerMode & cropperCornerMode & CropperCornerModeLeft) ||
-        (_cropperCornerMode & cropperCornerMode & CropperCornerModeRight))
+    if ((cropperCornerMode & newCropperCornerMode & CropperCornerModeLeft) ||
+        (cropperCornerMode & newCropperCornerMode & CropperCornerModeRight))
     {
         newPoint.x += translate.x;
     }
     
-    if ((_cropperCornerMode & cropperCornerMode & CropperCornerModeTop)  ||
-        (_cropperCornerMode & cropperCornerMode & CropperCornerModeBottom))
+    if ((cropperCornerMode & newCropperCornerMode & CropperCornerModeTop)  ||
+        (cropperCornerMode & newCropperCornerMode & CropperCornerModeBottom))
     {
         newPoint.y += translate.y;
     }
@@ -100,26 +102,26 @@
 
 #pragma mark -
 #pragma mark UIPanGestureRecognizer
-- (void)panGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer
+- (void)panGestureRecognizer:(UIPanGestureRecognizer *)sender
 {
-    switch (panGestureRecognizer.state)
+    switch ([sender state])
     {
         case UIGestureRecognizerStateBegan:
         {
-            if ([_delegate respondsToSelector:@selector(cropperCornerView:)])
+            if ([_delegate respondsToSelector:@selector(cropperCorner:)])
             {
                 // began center
-                [_delegate cropperCornerView:self];
+                [_delegate cropperCorner:self];
             }
             break;
         }
         case UIGestureRecognizerStateChanged:
         {
-            CGPoint translate = [panGestureRecognizer translationInView:[panGestureRecognizer view]];
-            if ([_delegate respondsToSelector:@selector(cropperCornerView:translate:cropperCornerMode:)])
+            CGPoint translate = [sender translationInView:[sender view]];
+            if ([_delegate respondsToSelector:@selector(cropperCorner:translate:cropperCornerMode:)])
             {
                 // translate
-                [_delegate cropperCornerView:self translate:translate cropperCornerMode:[self cropperCornerMode]];
+                [_delegate cropperCorner:self translate:translate cropperCornerMode:[self cropperCornerMode]];
             }
             break;
         }

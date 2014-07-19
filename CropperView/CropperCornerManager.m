@@ -1,6 +1,5 @@
 //
 //  CropperCornerManager.m
-//
 //  Cropper
 //
 //  Created by 최 중관 on 2014. 7. 18..
@@ -55,28 +54,28 @@ static NSUInteger const kCropperConerSize = 22;
     // Left & Top corner
     CropperCornerView * LT = [[CropperCornerView alloc] initWithFrame:CGRectMake(x, y, kCropperConerSize, kCropperConerSize)];
     [LT setDelegate:self];
-    [LT setTag:_count];
+    [LT setIndex:_count];
     [LT setCropperCornerMode:CropperCornerModeLeft | CropperCornerModeTop | CropperCornerModeTopLeft];
     [_view addSubview:LT];
     
     // Left & Bottom corner
     CropperCornerView * LB = [[CropperCornerView alloc] initWithFrame:CGRectMake(x, height, kCropperConerSize, kCropperConerSize)];
     [LB setDelegate:self];
-    [LB setTag:_count];
+    [LB setIndex:_count];
     [LB setCropperCornerMode:CropperCornerModeLeft | CropperCornerModeBottom];
     [_view addSubview:LB];
     
     // Right & Top corner
     CropperCornerView * RT = [[CropperCornerView alloc] initWithFrame:CGRectMake(width, y, kCropperConerSize, kCropperConerSize)];
     [RT setDelegate:self];
-    [RT setTag:_count];
+    [RT setIndex:_count];
     [RT setCropperCornerMode:CropperCornerModeRight | CropperCornerModeTop];
     [_view addSubview:RT];
     
     // Right & Bottom corner
     CropperCornerView * RB = [[CropperCornerView alloc] initWithFrame:CGRectMake(width, height, kCropperConerSize, kCropperConerSize)];
     [RB setDelegate:self];
-    [RB setTag:_count];
+    [RB setIndex:_count];
     [RB setCropperCornerMode:CropperCornerModeRight | CropperCornerModeBottom | CropperCornerModeBottomRight];
     [_view addSubview:RB];
     
@@ -148,14 +147,14 @@ static NSUInteger const kCropperConerSize = 22;
     NSMutableArray * ret = [NSMutableArray arrayWithCapacity:_count];
     for (UIView * subview in [_view subviews])
     {
-        if ([subview isKindOfClass:[CropperCornerView class]])
+        if ([subview conformsToProtocol:@protocol(ICropperCorner)])
         {
-            CropperCornerView * cropperCornerView = (CropperCornerView *)subview;
+            id<ICropperCorner> cropperCorner = (id<ICropperCorner>)subview;
             
-            if (([cropperCornerView tag] == index) &&                                   // 같은 index
-                ([cropperCornerView cropperCornerMode] & cropperCornerMode))            // 같은 corner mode
+            if (([cropperCorner index] == index) &&                                   // 같은 index
+                ([cropperCorner cropperCornerMode] & cropperCornerMode))            // 같은 corner mode
             {
-                [ret addObject:cropperCornerView];
+                [ret addObject:cropperCorner];
             }
         }
     }
@@ -170,8 +169,8 @@ static NSUInteger const kCropperConerSize = 22;
  */
 - (CGRect)cropperCornerFrameFromIndex:(NSUInteger)index
 {
-    CropperCornerView * TL = [self cropperCornersWithCornerMode:CropperCornerModeTopLeft     index:index][0];
-    CropperCornerView * BR = [self cropperCornersWithCornerMode:CropperCornerModeBottomRight index:index][0];
+    id<ICropperCorner> TL = [self cropperCornersWithCornerMode:CropperCornerModeTopLeft     index:index][0];
+    id<ICropperCorner> BR = [self cropperCornersWithCornerMode:CropperCornerModeBottomRight index:index][0];
     
     return CGRectMake(TL.center.x,
                       TL.center.y,
@@ -200,26 +199,26 @@ static NSUInteger const kCropperConerSize = 22;
 
 #pragma mark -
 #pragma mark UICropperCornerViewDelegate
-- (void)cropperCornerView:(CropperCornerView *)cropperCornerView
+- (void)cropperCorner:(id<ICropperCorner>)cropperCorner
 {
-    NSInteger index = [cropperCornerView tag];
-    CropperCornerMode CCM = [cropperCornerView cropperCornerMode];
+    NSInteger index = [cropperCorner index];
+    CropperCornerMode CCM = [cropperCorner cropperCornerMode];
 
     // 현재 인덱스 중 코너 모드와 연결된
     // ex,. TL -> BL & TR
     // ex,. BR -> TR & BL
-    for (CropperCornerView * CCV in [self cropperCornersWithCornerMode:CCM index:index])
+    for (id<ICropperCorner> cropperCorner in [self cropperCornersWithCornerMode:CCM index:index])
     {
-        [CCV setBeganCenter];
+        [cropperCorner setBeganCenter];
     }
 }
 
-- (void)cropperCornerView:(CropperCornerView *)cropperCornerView translate:(CGPoint)translate cropperCornerMode:(CropperCornerMode)cropperCornerMode
+- (void)cropperCorner:(id<ICropperCorner>)cropperCorner translate:(CGPoint)translate cropperCornerMode:(CropperCornerMode)cropperCornerMode
 {
-    NSInteger index = [cropperCornerView tag];
-    for (CropperCornerView * CCV in [self cropperCornersWithCornerMode:cropperCornerMode index:index])
+    NSInteger index = [cropperCorner index];
+    for (id<ICropperCorner> cropperCorner in [self cropperCornersWithCornerMode:cropperCornerMode index:index])
     {
-        [CCV setTranslate:translate cropperCornerMode:cropperCornerMode];
+        [cropperCorner setTranslate:translate cropperCornerMode:cropperCornerMode];
     }
 
     [self draw];

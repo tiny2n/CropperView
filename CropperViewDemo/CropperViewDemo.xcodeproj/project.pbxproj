@@ -21,12 +21,16 @@
 		F15D7526197ABFF70026B5BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15D7508197ABFF70026B5BF /* UIKit.framework */; };
 		F15D752E197ABFF70026B5BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F15D752C197ABFF70026B5BF /* InfoPlist.strings */; };
 		F15D7530197ABFF70026B5BF /* CropperViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F15D752F197ABFF70026B5BF /* CropperViewDemoTests.m */; };
-		F15D7541197AC0220026B5BF /* CropperCornerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F15D753B197AC0220026B5BF /* CropperCornerManager.m */; };
-		F15D7542197AC0220026B5BF /* CropperCornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F15D753D197AC0220026B5BF /* CropperCornerView.m */; };
-		F15D7543197AC0220026B5BF /* CropperCornerView.png in Resources */ = {isa = PBXBuildFile; fileRef = F15D753E197AC0220026B5BF /* CropperCornerView.png */; };
-		F15D7544197AC0220026B5BF /* CropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = F15D7540197AC0220026B5BF /* CropperView.m */; };
 		F15D7546197AC2170026B5BF /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F15D7545197AC2170026B5BF /* background@2x.png */; };
 		F15D7547197AC2170026B5BF /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F15D7545197AC2170026B5BF /* background@2x.png */; };
+		F15D7555197ADB220026B5BF /* CropperCornerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F15D754D197ADB220026B5BF /* CropperCornerManager.m */; };
+		F15D7556197ADB220026B5BF /* CropperCornerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F15D754D197ADB220026B5BF /* CropperCornerManager.m */; };
+		F15D7557197ADB220026B5BF /* CropperCornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F15D754F197ADB220026B5BF /* CropperCornerView.m */; };
+		F15D7558197ADB220026B5BF /* CropperCornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F15D754F197ADB220026B5BF /* CropperCornerView.m */; };
+		F15D7559197ADB220026B5BF /* CropperCornerView.png in Resources */ = {isa = PBXBuildFile; fileRef = F15D7550197ADB220026B5BF /* CropperCornerView.png */; };
+		F15D755A197ADB220026B5BF /* CropperCornerView.png in Resources */ = {isa = PBXBuildFile; fileRef = F15D7550197ADB220026B5BF /* CropperCornerView.png */; };
+		F15D755B197ADB220026B5BF /* CropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = F15D7552197ADB220026B5BF /* CropperView.m */; };
+		F15D755C197ADB220026B5BF /* CropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = F15D7552197ADB220026B5BF /* CropperView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,16 +63,16 @@
 		F15D752B197ABFF70026B5BF /* CropperViewDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CropperViewDemoTests-Info.plist"; sourceTree = "<group>"; };
 		F15D752D197ABFF70026B5BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F15D752F197ABFF70026B5BF /* CropperViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CropperViewDemoTests.m; sourceTree = "<group>"; };
-		F15D753A197AC0220026B5BF /* CropperCornerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropperCornerManager.h; sourceTree = "<group>"; };
-		F15D753B197AC0220026B5BF /* CropperCornerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropperCornerManager.m; sourceTree = "<group>"; };
-		F15D753C197AC0220026B5BF /* CropperCornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropperCornerView.h; sourceTree = "<group>"; };
-		F15D753D197AC0220026B5BF /* CropperCornerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropperCornerView.m; sourceTree = "<group>"; };
-		F15D753E197AC0220026B5BF /* CropperCornerView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CropperCornerView.png; sourceTree = "<group>"; };
-		F15D753F197AC0220026B5BF /* CropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropperView.h; sourceTree = "<group>"; };
-		F15D7540197AC0220026B5BF /* CropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropperView.m; sourceTree = "<group>"; };
 		F15D7545197AC2170026B5BF /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
-		F15D7548197AC4E60026B5BF /* ICropper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICropper.h; sourceTree = "<group>"; };
-		F15D754A197AD4DB0026B5BF /* ICropperCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICropperCorner.h; sourceTree = "<group>"; };
+		F15D754C197ADB220026B5BF /* CropperCornerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropperCornerManager.h; sourceTree = "<group>"; };
+		F15D754D197ADB220026B5BF /* CropperCornerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropperCornerManager.m; sourceTree = "<group>"; };
+		F15D754E197ADB220026B5BF /* CropperCornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropperCornerView.h; sourceTree = "<group>"; };
+		F15D754F197ADB220026B5BF /* CropperCornerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropperCornerView.m; sourceTree = "<group>"; };
+		F15D7550197ADB220026B5BF /* CropperCornerView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CropperCornerView.png; sourceTree = "<group>"; };
+		F15D7551197ADB220026B5BF /* CropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropperView.h; sourceTree = "<group>"; };
+		F15D7552197ADB220026B5BF /* CropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropperView.m; sourceTree = "<group>"; };
+		F15D7553197ADB220026B5BF /* ICropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICropper.h; sourceTree = "<group>"; };
+		F15D7554197ADB220026B5BF /* ICropperCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICropperCorner.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 		F15D74F8197ABFF70026B5BF = {
 			isa = PBXGroup;
 			children = (
+				F15D754B197ADB220026B5BF /* CropperView */,
 				F15D750A197ABFF70026B5BF /* CropperViewDemo */,
 				F15D7529197ABFF70026B5BF /* CropperViewDemoTests */,
 				F15D7503197ABFF70026B5BF /* Frameworks */,
@@ -128,7 +133,6 @@
 		F15D750A197ABFF70026B5BF /* CropperViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				F15D7539197AC0220026B5BF /* CropperView */,
 				F15D7513197ABFF70026B5BF /* AppDelegate.h */,
 				F15D7514197ABFF70026B5BF /* AppDelegate.m */,
 				F15D7516197ABFF70026B5BF /* Main.storyboard */,
@@ -170,18 +174,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F15D7539197AC0220026B5BF /* CropperView */ = {
+		F15D754B197ADB220026B5BF /* CropperView */ = {
 			isa = PBXGroup;
 			children = (
-				F15D7548197AC4E60026B5BF /* ICropper.h */,
-				F15D754A197AD4DB0026B5BF /* ICropperCorner.h */,
-				F15D753A197AC0220026B5BF /* CropperCornerManager.h */,
-				F15D753B197AC0220026B5BF /* CropperCornerManager.m */,
-				F15D753C197AC0220026B5BF /* CropperCornerView.h */,
-				F15D753D197AC0220026B5BF /* CropperCornerView.m */,
-				F15D753E197AC0220026B5BF /* CropperCornerView.png */,
-				F15D753F197AC0220026B5BF /* CropperView.h */,
-				F15D7540197AC0220026B5BF /* CropperView.m */,
+				F15D754C197ADB220026B5BF /* CropperCornerManager.h */,
+				F15D754D197ADB220026B5BF /* CropperCornerManager.m */,
+				F15D754E197ADB220026B5BF /* CropperCornerView.h */,
+				F15D754F197ADB220026B5BF /* CropperCornerView.m */,
+				F15D7550197ADB220026B5BF /* CropperCornerView.png */,
+				F15D7551197ADB220026B5BF /* CropperView.h */,
+				F15D7552197ADB220026B5BF /* CropperView.m */,
+				F15D7553197ADB220026B5BF /* ICropper.h */,
+				F15D7554197ADB220026B5BF /* ICropperCorner.h */,
 			);
 			name = CropperView;
 			path = ../CropperView;
@@ -266,8 +270,8 @@
 				F15D751D197ABFF70026B5BF /* Images.xcassets in Resources */,
 				F15D750F197ABFF70026B5BF /* InfoPlist.strings in Resources */,
 				F15D7518197ABFF70026B5BF /* Main.storyboard in Resources */,
+				F15D7559197ADB220026B5BF /* CropperCornerView.png in Resources */,
 				F15D7546197AC2170026B5BF /* background@2x.png in Resources */,
-				F15D7543197AC0220026B5BF /* CropperCornerView.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +281,7 @@
 			files = (
 				F15D7547197AC2170026B5BF /* background@2x.png in Resources */,
 				F15D752E197ABFF70026B5BF /* InfoPlist.strings in Resources */,
+				F15D755A197ADB220026B5BF /* CropperCornerView.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,11 +292,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F15D7542197AC0220026B5BF /* CropperCornerView.m in Sources */,
-				F15D7541197AC0220026B5BF /* CropperCornerManager.m in Sources */,
+				F15D7557197ADB220026B5BF /* CropperCornerView.m in Sources */,
+				F15D7555197ADB220026B5BF /* CropperCornerManager.m in Sources */,
 				F15D751B197ABFF70026B5BF /* ViewController.m in Sources */,
 				F15D7515197ABFF70026B5BF /* AppDelegate.m in Sources */,
-				F15D7544197AC0220026B5BF /* CropperView.m in Sources */,
+				F15D755B197ADB220026B5BF /* CropperView.m in Sources */,
 				F15D7511197ABFF70026B5BF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,7 +305,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F15D7556197ADB220026B5BF /* CropperCornerManager.m in Sources */,
 				F15D7530197ABFF70026B5BF /* CropperViewDemoTests.m in Sources */,
+				F15D755C197ADB220026B5BF /* CropperView.m in Sources */,
+				F15D7558197ADB220026B5BF /* CropperCornerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +505,7 @@
 				F15D7535197ABFF70026B5BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F15D7536197ABFF70026B5BF /* Build configuration list for PBXNativeTarget "CropperViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +514,7 @@
 				F15D7538197ABFF70026B5BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
