@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EC2D98A8-72E1-4804-B125-2C2AA9CCDE4B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CropperViewDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2249C344-1037-403E-B7C8-EC5840DDE771</key>
+		<string>https://github.com/tiny2n/CropperView.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CropperViewDemo/CropperViewDemo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2249C344-1037-403E-B7C8-EC5840DDE771</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/tiny2n/CropperView.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2249C344-1037-403E-B7C8-EC5840DDE771</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2249C344-1037-403E-B7C8-EC5840DDE771</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CropperView</string>
+		</dict>
+	</array>
+</dict>
+</plist>
