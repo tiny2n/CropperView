@@ -11,7 +11,7 @@
 
 #import "CropperCornerView.h"
 
-static NSUInteger const kCropperConerSize = 22;
+static NSUInteger const kCropperConerSize = 22; // 코너 이미지 사이즈
 
 @interface CropperCornerManager()
 {
@@ -194,7 +194,7 @@ static NSUInteger const kCropperConerSize = 22;
         }
     }
 
-    return NSUIntegerMax;
+    return -1;
 }
 
 #pragma mark -

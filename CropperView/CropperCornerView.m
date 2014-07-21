@@ -67,11 +67,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-
-}
-
 /**
  코너의 위치를 등록하는 메소드
  */

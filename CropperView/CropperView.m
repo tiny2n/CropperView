@@ -10,6 +10,8 @@
 
 #import "CropperCornerManager.h"
 
+static NSInteger const kCropperIndexDefault = -1;
+
 @interface CropperView()
 {
     @private
@@ -24,7 +26,7 @@
 {
     [self setBackgroundColor:[UIColor whiteColor]];
     
-    _contentColor = [UIColor colorWithWhite:0.0f alpha:0.4f];
+    _contentColor  = [UIColor colorWithWhite:0.0f alpha:0.4f];
     _cropperCornerManager = [[CropperCornerManager alloc] initWithView:self];
     
     // add GestureRecognizer
@@ -72,8 +74,11 @@
     [self removeAllCroppers];
 }
 
+#pragma mark -
+#pragma mark ICropper
 /**
  코너 정보 세트 추가
+ @param CGRect
  */
 - (void)addCropper:(CGRect)cropper
 {
@@ -107,6 +112,8 @@
     return [_cropperCornerManager count];
 }
 
+#pragma mark -
+#pragma mark crop
 /**
  특정 인덱스 코너 세트들을 이용하여 Crop Image를 반환하는 메소드
  @param NSUInteger
@@ -156,28 +163,41 @@
 #pragma mark UIGestureRecognizer
 - (void)panGestureRecognizer:(UIPanGestureRecognizer *)sender
 {
-    // TO-DO 드래그를 이용하여 특정 Rect를 이용시
-    // 커서의 위치가 다른 Rect와 겹치게 되는 경우 에러 발생
+    CGPoint point = [sender locationInView:[sender view]];
+    static NSInteger cropperIndex = kCropperIndexDefault;
     
-    CGPoint point   = [sender locationInView:[sender view]];
-    NSInteger index = [_cropperCornerManager cornerIndexFromCGPoint:point];
-    
-    if ([sender state] == UIGestureRecognizerStateBegan)
+    switch ([sender state])
     {
-        for (id<ICropperCorner> cropperCorner in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:index])
+        case UIGestureRecognizerStateBegan:
         {
-            // frame 전체적으로 이동 준비
-            [cropperCorner setBeganCenter];
+            cropperIndex = [_cropperCornerManager cornerIndexFromCGPoint:point];
+            
+            for (id<ICropperCorner> cropperCorner in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:cropperIndex])
+            {
+                // frame 전체적으로 이동 준비
+                [cropperCorner setBeganCenter];
+            }
+            break;
         }
-    }
-    else if ([sender state] == UIGestureRecognizerStateChanged)
-    {
-        CGPoint translate = [sender translationInView:[sender view]];
-        for (id<ICropperCorner> cropperCorner in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:index])
+        case UIGestureRecognizerStateChanged:
         {
-            // frame 전체적으로 이동
-            [_cropperCornerManager cropperCorner:cropperCorner translate:translate cropperCornerMode:CropperCornerModeAll];
+            if (cropperIndex == kCropperIndexDefault)
+            {
+                // cropper index 를 검사하여 Rect 겹치더라도 오류나지 않게 수정
+                cropperIndex = [_cropperCornerManager cornerIndexFromCGPoint:point];
+            }
+            
+            CGPoint translate = [sender translationInView:[sender view]];
+            for (id<ICropperCorner> cropperCorner in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:cropperIndex])
+            {
+                // frame 전체적으로 이동
+                [_cropperCornerManager cropperCorner:cropperCorner translate:translate cropperCornerMode:CropperCornerModeAll];
+            }
+            break;
         }
+        default:
+            cropperIndex = kCropperIndexDefault;
+            break;
     }
 }
 
