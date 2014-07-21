@@ -26,7 +26,7 @@ static NSInteger const kCropperIndexDefault = -1;
 {
     [self setBackgroundColor:[UIColor whiteColor]];
     
-    _contentColor  = [UIColor colorWithWhite:0.0f alpha:0.4f];
+    _contentColor         = [UIColor colorWithWhite:0.0f alpha:0.4f];
     _cropperCornerManager = [[CropperCornerManager alloc] initWithView:self];
     
     // add GestureRecognizer
@@ -174,7 +174,7 @@ static NSInteger const kCropperIndexDefault = -1;
             
             for (id<ICropperCorner> cropperCorner in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:cropperIndex])
             {
-                // frame 전체적으로 이동 준비
+                // Cropper 전체적으로 이동 준비
                 [cropperCorner setBeganCenter];
             }
             break;
@@ -190,7 +190,7 @@ static NSInteger const kCropperIndexDefault = -1;
             CGPoint translate = [sender translationInView:[sender view]];
             for (id<ICropperCorner> cropperCorner in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:cropperIndex])
             {
-                // frame 전체적으로 이동
+                // Cropper 전체적으로 이동
                 [_cropperCornerManager cropperCorner:cropperCorner translate:translate cropperCornerMode:CropperCornerModeAll];
             }
             break;
@@ -205,26 +205,27 @@ static NSInteger const kCropperIndexDefault = -1;
 {
     [super drawRect:rect];
     
+    // 1. draw Background Image
     CGSize imageSize = [_image size];
     CGSize viewSize  = [self bounds].size;
     
     CGFloat hfactor = imageSize.width  / viewSize.width;
     CGFloat vfactor = imageSize.height / viewSize.height;
     
-    CGFloat factor = fmax(hfactor, vfactor);
+    CGFloat factor  = fmax(hfactor, vfactor);
     
     CGFloat newWidth  = imageSize.width  / factor;
     CGFloat newHeight = imageSize.height / factor;
     
-    CGFloat x = (self.bounds.size.width  - newWidth)  / 2;
-    CGFloat y = (self.bounds.size.height - newHeight) / 2;
+    CGFloat x = (viewSize.width  - newWidth)  / 2;
+    CGFloat y = (viewSize.height - newHeight) / 2;
     CGRect newRect = CGRectMake(x, y, newWidth, newHeight);
     
     [_image drawInRect:newRect];
     
+    // 2. draw Cropper Areas
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    // Fill black
     CGContextSetFillColorWithColor(context, _contentColor.CGColor);
     
     for (NSUInteger i = 0; i < [_cropperCornerManager count]; i++)

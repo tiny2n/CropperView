@@ -24,8 +24,9 @@
 {
     cropperCornerMode = CropperCornerModeNone;
     
-    [self setImage:[UIImage imageNamed:@"CropperCornerView.png"]];
-    [self setUserInteractionEnabled:YES];
+    UIImageView * cornerImage = [[UIImageView alloc] initWithFrame:self.bounds];
+    [cornerImage setImage:[UIImage imageNamed:@"CropperCornerView.png"]];
+    [self addSubview:cornerImage];
     
     // add GestureRecognizer
     UIPanGestureRecognizer * panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizer:)];
@@ -65,6 +66,11 @@
     }
     
     return self;
+}
+
+- (void)dealloc
+{
+    _delegate = nil;
 }
 
 /**
@@ -128,9 +134,8 @@
             }
             break;
         }
-        case UIGestureRecognizerStateEnded:
         default:
-            _beganCenter = CGPointZero;
+            [self setBeganCenter];
             break;
     }
 }

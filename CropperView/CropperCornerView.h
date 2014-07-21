@@ -10,9 +10,9 @@
 
 @protocol CropperCornerViewDelegate;
 
-@interface CropperCornerView : UIImageView <ICropperCorner>
+@interface CropperCornerView : UIView <ICropperCorner>
 
-@property (nonatomic, assign) id<CropperCornerViewDelegate> delegate;
+@property (nonatomic, weak) id<CropperCornerViewDelegate> delegate;
 
 @end
 

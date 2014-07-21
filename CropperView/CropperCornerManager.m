@@ -51,32 +51,30 @@ static NSUInteger const kCropperConerSize = 22; // 코너 이미지 사이즈
     CGFloat width  = x + CGRectGetWidth(cropper);
     CGFloat height = y + CGRectGetHeight(cropper);
     
-    // Left & Top corner
-    CropperCornerView * LT = [[CropperCornerView alloc] initWithFrame:CGRectMake(x, y, kCropperConerSize, kCropperConerSize)];
+    
+    CropperCornerView * LT = [[CropperCornerView alloc] initWithFrame:CGRectMake(x,     y,      kCropperConerSize, kCropperConerSize)];         // Left & Top corner
+    CropperCornerView * LB = [[CropperCornerView alloc] initWithFrame:CGRectMake(x,     height, kCropperConerSize, kCropperConerSize)];         // Left & Bottom corner
+    CropperCornerView * RT = [[CropperCornerView alloc] initWithFrame:CGRectMake(width, y,      kCropperConerSize, kCropperConerSize)];         // Right & Top corner
+    CropperCornerView * RB = [[CropperCornerView alloc] initWithFrame:CGRectMake(width, height, kCropperConerSize, kCropperConerSize)];         // Right & Bottom corner
+    
     [LT setDelegate:self];
-    [LT setIndex:_count];
-    [LT setCropperCornerMode:CropperCornerModeLeft | CropperCornerModeTop | CropperCornerModeTopLeft];
-    [_view addSubview:LT];
-    
-    // Left & Bottom corner
-    CropperCornerView * LB = [[CropperCornerView alloc] initWithFrame:CGRectMake(x, height, kCropperConerSize, kCropperConerSize)];
     [LB setDelegate:self];
-    [LB setIndex:_count];
-    [LB setCropperCornerMode:CropperCornerModeLeft | CropperCornerModeBottom];
-    [_view addSubview:LB];
-    
-    // Right & Top corner
-    CropperCornerView * RT = [[CropperCornerView alloc] initWithFrame:CGRectMake(width, y, kCropperConerSize, kCropperConerSize)];
     [RT setDelegate:self];
-    [RT setIndex:_count];
-    [RT setCropperCornerMode:CropperCornerModeRight | CropperCornerModeTop];
-    [_view addSubview:RT];
-    
-    // Right & Bottom corner
-    CropperCornerView * RB = [[CropperCornerView alloc] initWithFrame:CGRectMake(width, height, kCropperConerSize, kCropperConerSize)];
     [RB setDelegate:self];
+    
+    [LT setIndex:_count];
+    [LB setIndex:_count];
+    [RT setIndex:_count];
     [RB setIndex:_count];
-    [RB setCropperCornerMode:CropperCornerModeRight | CropperCornerModeBottom | CropperCornerModeBottomRight];
+    
+    [LT setCropperCornerMode:CropperCornerModeLeft  | CropperCornerModeTop      | CropperCornerModeTopLeft      ];  // 크기를 구하기 위해 좌상단/우하단은 플래그 추가 등록
+    [LB setCropperCornerMode:CropperCornerModeLeft  | CropperCornerModeBottom                                   ];
+    [RT setCropperCornerMode:CropperCornerModeRight | CropperCornerModeTop                                      ];
+    [RB setCropperCornerMode:CropperCornerModeRight | CropperCornerModeBottom   | CropperCornerModeBottomRight  ];
+    
+    [_view addSubview:LT];
+    [_view addSubview:LB];
+    [_view addSubview:RT];
     [_view addSubview:RB];
     
     _count++;
@@ -151,8 +149,8 @@ static NSUInteger const kCropperConerSize = 22; // 코너 이미지 사이즈
         {
             id<ICropperCorner> cropperCorner = (id<ICropperCorner>)subview;
             
-            if (([cropperCorner index] == index) &&                                   // 같은 index
-                ([cropperCorner cropperCornerMode] & cropperCornerMode))            // 같은 corner mode
+            if (([cropperCorner index] == index) &&                             // 같은 index
+                ([cropperCorner cropperCornerMode] & cropperCornerMode))        // 같은 corner mode
             {
                 [ret addObject:cropperCorner];
             }
