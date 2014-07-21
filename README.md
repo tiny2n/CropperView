@@ -24,9 +24,14 @@ Add the files to your project manually by dragging the CropperView directory int
     [cropperView addCropper:CGRectMake(10, 10, 100, 100)];    // <- draw rect {{10, 10}, {100, 100}}
     [cropperView addCropper:CGRectMake(130, 130, 100, 100)];  // <- do you want it multi rect, add rect
     [self.view addSubview:cropperView];
-
+    ...
+// ---------------------------------------------------
+// ex) crop image by Rect of CopperView
+// ---------------------------------------------------
+    UIImage * image = [cropperView cropAtIndex:0]; // as multiple Cropper Mode, get image object with particular index
+    // or
+    NSArray * images = [cropperView crop]; // get image list Cropper's
 ```
-
 
 License
 -------------------------------------------------------
