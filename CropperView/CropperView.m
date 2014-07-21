@@ -170,7 +170,7 @@
             [cropperCorner setBeganCenter];
         }
     }
-    else if (sender.state == UIGestureRecognizerStateChanged)
+    else if ([sender state] == UIGestureRecognizerStateChanged)
     {
         CGPoint translate = [sender translationInView:[sender view]];
         for (id<ICropperCorner> cropperCorner in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:index])
