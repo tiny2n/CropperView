@@ -36,7 +36,7 @@ Add the files to your project manually by dragging the CropperView directory int
 // ---------------------------------------------------
     UIImage * image = [cropperView cropAtIndex:0]; // as multiple Cropper Mode, get image object with particular index
     // or
-    NSArray * images = [cropperView crop]; // get image list Cropper's
+    NSArray * images = [cropperView crop]; // get image list Cropper's (all image)
     
 ...
 
