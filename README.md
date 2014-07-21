@@ -1,7 +1,8 @@
 CropperView
 =============
 
-It is Cropper View Lib
+It is Cropper View Lib.
+
 You can support multiple rect areas.
 You can move each of corners.
 You can move each of croppers.
