@@ -26,7 +26,7 @@ Add the files to your project manually by dragging the CropperView directory int
 // ---------------------------------------------------
     // add UIViewController
     CropperView * cropperView = [[CropperView alloc] initWithFrame:self.view.bounds];
-    [cropperView addCropper:CGRectMake(10, 10, 100, 100)];    // <- draw rect {{10, 10}, {100, 100}}
+    [cropperView addCropper:CGRectMake(10, 10, 100, 100)];    // <- add rect {{10, 10}, {100, 100}}
     [cropperView addCropper:CGRectMake(130, 130, 100, 100)];  // <- if you want multily rect, add rect
     [self.view addSubview:cropperView];
     
