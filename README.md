@@ -1,7 +1,11 @@
 CropperView
 =============
 
-...
+It is Cropper View Lib
+You can support multiple rect areas.
+You can move each of corners.
+You can move each of croppers.
+You can crop.
 
 
 ### Installation
@@ -38,7 +42,7 @@ Add the files to your project manually by dragging the CropperView directory int
 
 ```
 
-![DropAlert](https://www.dropbox.com/s/h8o30lt1art5kqz/iOS%20Simulator%20Screen%20shot%202014.%207.%2021.%20%EC%98%A4%ED%9B%84%203.45.59.png)
+![DropAlert](https://github.com/tiny2n/CropperView/blob/master/Screenshot.png)
 
 
 License
