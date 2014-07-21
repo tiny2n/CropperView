@@ -24,14 +24,22 @@ Add the files to your project manually by dragging the CropperView directory int
     [cropperView addCropper:CGRectMake(10, 10, 100, 100)];    // <- draw rect {{10, 10}, {100, 100}}
     [cropperView addCropper:CGRectMake(130, 130, 100, 100)];  // <- do you want it multi rect, add rect
     [self.view addSubview:cropperView];
-    ...
+    
+...
+
 // ---------------------------------------------------
 // ex) crop image by Rect of CopperView
 // ---------------------------------------------------
     UIImage * image = [cropperView cropAtIndex:0]; // as multiple Cropper Mode, get image object with particular index
     // or
     NSArray * images = [cropperView crop]; // get image list Cropper's
+    
+...
+
 ```
+
+![DropAlert](https://www.dropbox.com/s/h8o30lt1art5kqz/iOS%20Simulator%20Screen%20shot%202014.%207.%2021.%20%EC%98%A4%ED%9B%84%203.45.59.png)
+
 
 License
 -------------------------------------------------------
