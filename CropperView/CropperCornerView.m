@@ -72,11 +72,19 @@
 
 }
 
+/**
+ 코너의 위치를 등록하는 메소드
+ */
 - (void)setBeganCenter
 {
     _beganCenter = [self center];
 }
 
+/**
+ 코너를 이동하는 메소드
+ @param CGPoint
+ @param CropperCornerMode
+ */
 - (void)setTranslate:(CGPoint)translate cropperCornerMode:(CropperCornerMode)newCropperCornerMode
 {
     // ex,. 우측 & 아래 움직일땐 ...

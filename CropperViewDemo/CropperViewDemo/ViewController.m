@@ -20,11 +20,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self.view setBackgroundColor:[UIColor cyanColor]];
     
     CropperView * cropperView = [[CropperView alloc] initWithFrame:self.view.bounds];
-    [cropperView addCropper:CGRectMake(10, 10, 100, 100)];
-    [cropperView addCropper:CGRectMake(130, 130, 100, 100)];
+    [cropperView setImage:[UIImage imageNamed:@"background@2x.png"]];
+
+    [cropperView addCropper:CGRectMake(40, 40, 100, 100)];
+    [cropperView addCropper:CGRectMake(150, 150, 100, 100)];
     [self.view addSubview:cropperView];
+
 }
 
 - (void)didReceiveMemoryWarning

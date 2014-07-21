@@ -10,6 +10,10 @@
 
 @interface CropperView : UIView <ICropper>
 
+@property (nonatomic, strong) UIImage * image;
 @property (nonatomic, strong) UIColor * contentColor;
+
+- (UIImage *)cropAtIndex:(NSUInteger)index;
+- (NSArray *)crop;
 
 @end
