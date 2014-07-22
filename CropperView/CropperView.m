@@ -24,7 +24,7 @@ static NSInteger const kCropperIndexDefault = -1;
 
 - (void)_initialization
 {
-    [self setBackgroundColor:[UIColor whiteColor]];
+    [self setBackgroundColor:[UIColor clearColor]];
     
     _contentColor         = [UIColor colorWithWhite:0.0f alpha:0.4f];
     _cropperCornerManager = [[CropperCornerManager alloc] initWithView:self];
@@ -58,19 +58,17 @@ static NSInteger const kCropperIndexDefault = -1;
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (void)awakeFromNib
 {
-    if (self = [super initWithCoder:aDecoder])
-    {
-        // Initialization code
-        [self _initialization];
-    }
+    [super awakeFromNib];
     
-    return self;
+    // Initialization code
+    [self _initialization];
 }
 
 - (void)dealloc
 {
+    _image = nil;
     [self removeAllCroppers];
 }
 

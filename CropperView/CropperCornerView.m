@@ -57,15 +57,12 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (void)awakeFromNib
 {
-    if (self = [super initWithCoder:aDecoder])
-    {
-        // Initialization code
-        [self _initialization];
-    }
+    [super awakeFromNib];
     
-    return self;
+    // Initialization code
+    [self _initialization];
 }
 
 - (void)dealloc
