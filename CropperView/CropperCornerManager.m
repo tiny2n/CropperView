@@ -16,8 +16,8 @@ static NSUInteger const kCropperConerSize = 22; // 코너 이미지 사이즈
 @interface CropperCornerManager()
 {
     @private
-    __weak UIView   * _view;
-    NSUInteger _count;
+    __weak UIView * _view;
+    NSUInteger      _count;
 }
 
 @end
