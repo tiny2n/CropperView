@@ -10,29 +10,29 @@
 	<string>CropperViewDemo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>2249C344-1037-403E-B7C8-EC5840DDE771</key>
+		<key>621585744C5B6135947E68DB92E85571C7553817</key>
 		<string>https://github.com/tiny2n/CropperView.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CropperViewDemo/CropperViewDemo.xcodeproj/project.xcworkspace</string>
+	<string>CropperViewDemo/CropperViewDemo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>2249C344-1037-403E-B7C8-EC5840DDE771</key>
+		<key>621585744C5B6135947E68DB92E85571C7553817</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/tiny2n/CropperView.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>2249C344-1037-403E-B7C8-EC5840DDE771</string>
+	<string>621585744C5B6135947E68DB92E85571C7553817</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2249C344-1037-403E-B7C8-EC5840DDE771</string>
+			<string>621585744C5B6135947E68DB92E85571C7553817</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CropperView</string>
 		</dict>

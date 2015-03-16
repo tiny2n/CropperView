@@ -15,11 +15,10 @@
 - (BOOL)hasCropperCornersWithCornerMode:(CropperCornerMode)cropperCornerMode index:(NSInteger)index;
 - (NSArray *)cropperCornersWithCornerMode:(CropperCornerMode)cropperCornerMode index:(NSInteger)index;
 - (NSUInteger)cornerIndexFromCGPoint:(CGPoint)point;
-- (void)draw;
 @end
 
 @interface CropperCornerManager : NSObject <ICropperCornerManager>
 
-- (id)initWithView:(UIView *)view;
+- (instancetype)initWithView:(UIView *)view;
 
 @end

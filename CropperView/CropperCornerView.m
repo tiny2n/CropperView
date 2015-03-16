@@ -8,9 +8,8 @@
 
 #import "CropperCornerView.h"
 
-@interface CropperCornerView()
-{
-    @private
+@interface CropperCornerView() {
+
     CGPoint _beganCenter;
 }
 @end
@@ -20,8 +19,7 @@
 @synthesize cropperCornerMode;
 @synthesize index = tag;
 
-- (void)_initialization
-{
+- (void)cc_initialization {
     cropperCornerMode = CropperCornerModeNone;
     
     UIImageView * cornerImage = [[UIImageView alloc] initWithFrame:self.bounds];
@@ -35,46 +33,39 @@
 
 #pragma mark -
 #pragma mark life-cycle
-- (id)init
-{
-    if (self = [super init])
-    {
+- (instancetype)init {
+    if (self = [super init]) {
         // Initialization code
-        [self _initialization];
+        [self cc_initialization];
     }
     
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame])
-    {
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
         // Initialization code
-        [self _initialization];
+        [self cc_initialization];
     }
     
     return self;
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     
     // Initialization code
-    [self _initialization];
+    [self cc_initialization];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     _delegate = nil;
 }
 
 /**
  코너의 위치를 등록하는 메소드
  */
-- (void)setBeganCenter
-{
+- (void)setBeganCenter {
     _beganCenter = [self center];
 }
 
@@ -83,8 +74,7 @@
  @param CGPoint
  @param CropperCornerMode
  */
-- (void)setTranslate:(CGPoint)translate cropperCornerMode:(CropperCornerMode)newCropperCornerMode
-{
+- (void)setTranslate:(CGPoint)translate cropperCornerMode:(CropperCornerMode)newCropperCornerMode {
     // ex,. 우측 & 아래 움직일땐 ...
     // 우축 & 위   ... Y 고정
     // 좌측 & 아래  ... X 고정
@@ -92,14 +82,12 @@
     CGPoint newPoint = _beganCenter;
     
     if ((cropperCornerMode & newCropperCornerMode & CropperCornerModeLeft) ||
-        (cropperCornerMode & newCropperCornerMode & CropperCornerModeRight))
-    {
+        (cropperCornerMode & newCropperCornerMode & CropperCornerModeRight)) {
         newPoint.x += translate.x;
     }
     
     if ((cropperCornerMode & newCropperCornerMode & CropperCornerModeTop)  ||
-        (cropperCornerMode & newCropperCornerMode & CropperCornerModeBottom))
-    {
+        (cropperCornerMode & newCropperCornerMode & CropperCornerModeBottom)) {
         newPoint.y += translate.y;
     }
     
@@ -108,24 +96,18 @@
 
 #pragma mark -
 #pragma mark UIPanGestureRecognizer
-- (void)panGestureRecognizer:(UIPanGestureRecognizer *)sender
-{
-    switch ([sender state])
-    {
-        case UIGestureRecognizerStateBegan:
-        {
-            if ([_delegate respondsToSelector:@selector(cropperCorner:)])
-            {
+- (void)panGestureRecognizer:(UIPanGestureRecognizer *)sender {
+    switch ([sender state]) {
+        case UIGestureRecognizerStateBegan: {
+            if ([_delegate respondsToSelector:@selector(cropperCorner:)]) {
                 // began center
                 [_delegate cropperCorner:self];
             }
             break;
         }
-        case UIGestureRecognizerStateChanged:
-        {
+        case UIGestureRecognizerStateChanged: {
             CGPoint translate = [sender translationInView:[sender view]];
-            if ([_delegate respondsToSelector:@selector(cropperCorner:translate:cropperCornerMode:)])
-            {
+            if ([_delegate respondsToSelector:@selector(cropperCorner:translate:cropperCornerMode:)]) {
                 // translate
                 [_delegate cropperCorner:self translate:translate cropperCornerMode:[self cropperCornerMode]];
             }

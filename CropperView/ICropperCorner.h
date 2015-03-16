@@ -19,9 +19,9 @@ typedef NS_ENUM(NSUInteger, CropperCornerMode) {
 
 @protocol ICropperCorner <NSObject>
 @required
-@property (nonatomic, assign) CropperCornerMode cropperCornerMode;
-@property (nonatomic, assign) NSInteger index;
-@property (nonatomic, assign) CGPoint center;
+@property (nonatomic, unsafe_unretained) CropperCornerMode cropperCornerMode;
+@property (nonatomic, unsafe_unretained) NSInteger index;
+@property (nonatomic, unsafe_unretained) CGPoint center;
 
 - (void)setBeganCenter;
 - (void)setTranslate:(CGPoint)translate cropperCornerMode:(CropperCornerMode)cropperCornerMode;

@@ -12,18 +12,17 @@
 
 static NSInteger const kCropperIndexDefault = -1;
 
-@interface CropperView()
-{
-    @private
+@interface CropperView() {
+
     id<ICropperCornerManager> _cropperCornerManager;
+    NSInteger _currentCropperIndex;
 }
 
 @end
 
 @implementation CropperView
 
-- (void)_initialization
-{
+- (void)cc_initialization {
     [self setBackgroundColor:[UIColor clearColor]];
     
     _contentColor         = [UIColor colorWithWhite:0.0f alpha:0.4f];
@@ -36,38 +35,32 @@ static NSInteger const kCropperIndexDefault = -1;
 
 #pragma mark -
 #pragma mark life-cycle
-- (id)init
-{
-    if (self = [super init])
-    {
+- (instancetype)init {
+    if (self = [super init]) {
         // Initialization code
-        [self _initialization];
+        [self cc_initialization];
     }
     
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame])
-    {
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
         // Initialization code
-        [self _initialization];
+        [self cc_initialization];
     }
     
     return self;
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     
     // Initialization code
-    [self _initialization];
+    [self cc_initialization];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     _image = nil;
     [self removeAllCroppers];
 }
@@ -78,16 +71,14 @@ static NSInteger const kCropperIndexDefault = -1;
  코너 정보 세트 추가
  @param CGRect
  */
-- (void)addCropper:(CGRect)cropper
-{
+- (void)addCropper:(CGRect)cropper {
     [_cropperCornerManager addCropper:cropper];
 }
 
 /**
  모든 코너 정보 제거
  */
-- (void)removeAllCroppers
-{
+- (void)removeAllCroppers {
     [_cropperCornerManager removeAllCroppers];
 }
 
@@ -96,8 +87,7 @@ static NSInteger const kCropperIndexDefault = -1;
  @param NSUInteger
  @return CGRect
  */
-- (CGRect)cropperCornerFrameFromIndex:(NSUInteger)index
-{
+- (CGRect)cropperCornerFrameFromIndex:(NSUInteger)index {
     return [_cropperCornerManager cropperCornerFrameFromIndex:index];
 }
 
@@ -105,8 +95,7 @@ static NSInteger const kCropperIndexDefault = -1;
  코너 세트의 갯수를 반환하는 메소드
  @return NSUInteger
  */
-- (NSUInteger)count
-{
+- (NSUInteger)count {
     return [_cropperCornerManager count];
 }
 
@@ -117,8 +106,7 @@ static NSInteger const kCropperIndexDefault = -1;
  @param NSUInteger
  @return UIImage
  */
-- (UIImage *)cropAtIndex:(NSUInteger)index
-{
+- (UIImage *)cropAtIndex:(NSUInteger)index {
     CGSize imageSize = [_image size];
     
     CGRect frame = [self cropperCornerFrameFromIndex:index];
@@ -145,12 +133,10 @@ static NSInteger const kCropperIndexDefault = -1;
  모든 코너 세트들을 이용하여 Crop Image List를 반환하는 메소드
  @return NSArray UIImage List
  */
-- (NSArray *)crop
-{
+- (NSArray *)crop {
     NSMutableArray * result = [NSMutableArray arrayWithCapacity:[self count]];
-
-    for (NSUInteger i = 0, cnt = [self count]; i < cnt; i++)
-    {
+    
+    for (NSUInteger i = 0, cnt = [self count]; i < cnt; i++) {
         [result addObject:[self cropAtIndex:i]];
     }
     
@@ -159,30 +145,25 @@ static NSInteger const kCropperIndexDefault = -1;
 
 #pragma mark -
 #pragma mark UIGestureRecognizer
-- (void)panGestureRecognizer:(UIPanGestureRecognizer *)sender
-{
+- (void)panGestureRecognizer:(UIPanGestureRecognizer *)sender {
     CGPoint point = [sender locationInView:[sender view]];
     static NSInteger cropperIndex = kCropperIndexDefault;
     
-    switch ([sender state])
-    {
-        case UIGestureRecognizerStateBegan:
-        {
+    switch ([sender state]) {
+        case UIGestureRecognizerStateBegan: {
             cropperIndex = [_cropperCornerManager cornerIndexFromCGPoint:point];
+            _currentCropperIndex = cropperIndex;
             
-            for (id<ICropperCorner> cropperCorner in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:cropperIndex])
-            {
+            for (id<ICropperCorner> cropperCorner in [_cropperCornerManager cropperCornersWithCornerMode:CropperCornerModeAll index:cropperIndex]) {
                 // Cropper 전체적으로 이동 준비
                 [cropperCorner setBeganCenter];
             }
             break;
         }
-        case UIGestureRecognizerStateChanged:
-        {
-            if (cropperIndex == kCropperIndexDefault)
-            {
+        case UIGestureRecognizerStateChanged: {
+            if (cropperIndex == kCropperIndexDefault) {
                 // cropper index 를 검사하여 Rect 겹치더라도 오류나지 않게 수정
-                cropperIndex = [_cropperCornerManager cornerIndexFromCGPoint:point];
+                cropperIndex = _currentCropperIndex;
             }
             
             CGPoint translate = [sender translationInView:[sender view]];
@@ -199,8 +180,7 @@ static NSInteger const kCropperIndexDefault = -1;
     }
 }
 
-- (void)drawRect:(CGRect)rect
-{
+- (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
     // 1. draw Background Image
@@ -226,11 +206,10 @@ static NSInteger const kCropperIndexDefault = -1;
     
     CGContextSetFillColorWithColor(context, _contentColor.CGColor);
     
-    for (NSUInteger i = 0; i < [_cropperCornerManager count]; i++)
-    {
+    for (NSUInteger i = 0; i < [_cropperCornerManager count]; i++) {
         CGRect frame = [_cropperCornerManager cropperCornerFrameFromIndex:i];
         CGContextAddRect(context, frame);
-    };
+    }
 
     CGContextFillPath(context);
 }
