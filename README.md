@@ -46,6 +46,15 @@ Add the files to your project manually by dragging the CropperView directory int
 ![DropAlert](https://github.com/tiny2n/CropperView/blob/master/Screenshot.png)
 
 
+## Contact
+
+Follow tiny2n on Twitter ([@tiny2n](https://twitter.com/tiny2n))
+
+
+### thanks
+
+- [AlexanderZubkov](https://github.com/AlexanderZubkov)
+
 License
 -------------------------------------------------------
 The MIT License (MIT)
